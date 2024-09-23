@@ -1,4 +1,4 @@
-import { Container, TextStatus, Title, TitleContainer, TopContainer, TopButton, TopText, StatusContainer, StatusCard, StatusIcon, StatusTextContainer, StatusText, StatusButtonDel } from "./styles";
+import { Container, TextStatus, Title, TitleContainer, TopContainer, TopButton, TopLeftText, StatusContainer, StatusCard, StatusIcon, StatusTextContainer, StatusText, StatusButtonDel } from "./styles";
 import {Feather} from "@expo/vector-icons";
 import { RootStackParamList } from "@/utils/types";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
@@ -19,8 +19,8 @@ export default function Details() {
         <Container>
             <TopContainer>
                 <TopButton onPress={() => navigation.popToTop()}>
-                    <Feather name="chevron-left" size={24} color="#1e1e1e" />
-                    <TopText>Voltar</TopText>
+                    <Feather name="chevron-left" size={24} color="#007AFF" />
+                    <TopLeftText>Voltar</TopLeftText>
                 </TopButton>
             </TopContainer>
             <TitleContainer>
@@ -30,8 +30,7 @@ export default function Details() {
             <StatusContainer>
                 <StatusCard>
                     <StatusIcon style={task.status? {backgroundColor: "#0e9577"}: {}}>
-                        {!task.status && <Feather name="square" size={24} color="white" />}
-                        {task.status && <Feather name="check-square" size={24} color="white" />}
+                        {task.status && <Feather name="check" size={24} color="white" />}
                     </StatusIcon>
                     <StatusTextContainer>
                         <StatusText>{task.status ? "Marcado": "Não marcado"}</StatusText>

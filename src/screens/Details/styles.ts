@@ -22,8 +22,13 @@ export const TopButton=styled.TouchableOpacity`
     gap: 16px;
 `;
 
-export const TopText = styled.Text`
-    color: #1e1e1e;
+export const TopLeftText = styled.Text`
+    color: #007AFF;
+    font-size: 16px;
+`;
+
+export const TopCenterText = styled.Text`
+    color: #000;
     font-size: 16px;
 `;
 
