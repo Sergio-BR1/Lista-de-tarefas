@@ -76,11 +76,7 @@ export default function Home() {
       
       <InputAddTask onPress={handleTaskAdd} onChangeText={setTaskText} value={taskText}/>
 
-      <View style={{flexDirection: 'row', gap: 16}}>
-        <CardNumber title={"Na lista"} num={countTask} color={"#1e1e1e"}/>
-        <CardNumber title={"Concluídas"} num={countTaskCheck} color={"#E8BA1A"}/>
-        <CardNumber title={"Não Concluídas"} num={countTask-countTaskCheck} color={"#0E9577"}/>
-      </View>
+      
       <View style={styles.tasks}>
         <Text>Tarefas: {countTask}</Text>
 

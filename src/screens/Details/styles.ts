@@ -11,25 +11,31 @@ export const Container = styled.View`
 export const TopContainer = styled.View`
     flex-direction: row;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
 
 `;
 
-export const TopButton=styled.TouchableOpacity`
+export const TopButton = styled.TouchableOpacity`
     flex-direction: row;
-    justify-content: start;
+    justify-content: space-between;
     align-items: center;
     gap: 16px;
+    flex: 0;
 `;
 
 export const TopLeftText = styled.Text`
     color: #007AFF;
     font-size: 16px;
+  
 `;
 
 export const TopCenterText = styled.Text`
     color: #000;
-    font-size: 16px;
+    font-size: 17px;
+    font-weight: 600;
+    flex: 1;
+    text-align: center;
+    
 `;
 
 export const TitleContainer = styled.View`
@@ -44,7 +50,7 @@ export const Title = styled.Text`
 `;
 
 export const TextStatus = styled.Text`
-    color: #1e1e1e;
+    color: #000;
     font-size: 16px;
 `;
 

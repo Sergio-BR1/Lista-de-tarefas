@@ -1,4 +1,4 @@
-import { Container, TextStatus, Title, TitleContainer, TopContainer, TopButton, TopLeftText, StatusContainer, StatusCard, StatusIcon, StatusTextContainer, StatusText, StatusButtonDel } from "./styles";
+import { Container, TextStatus, Title, TitleContainer, TopContainer, TopButton, TopLeftText, TopCenterText, StatusContainer, StatusCard, StatusIcon, StatusTextContainer, StatusText, StatusButtonDel } from "./styles";
 import {Feather} from "@expo/vector-icons";
 import { RootStackParamList } from "@/utils/types";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
@@ -22,6 +22,8 @@ export default function Details() {
                     <Feather name="chevron-left" size={24} color="#007AFF" />
                     <TopLeftText>Voltar</TopLeftText>
                 </TopButton>
+                
+                <TopCenterText>Adicionar</TopCenterText>
             </TopContainer>
             <TitleContainer>
                 <Title>{task.title}</Title>
