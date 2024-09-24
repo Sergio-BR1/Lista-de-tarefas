@@ -5,43 +5,40 @@ export const Container = styled.View`
     background-color: #FCEEC9;
     padding: 16px;
     padding-top: 64px;
-    gap: 16px;
+    gap: 12px;
 `;
 
 export const TopContainer = styled.View`
+    margin: 0px;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    grid-auto-flow: 0px;
 
 `;
 
 export const TopButton = styled.TouchableOpacity`
     flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 16px;
-    flex: 0;
+    justify-content: flex-start;
+    
 `;
 
 export const TopLeftText = styled.Text`
     color: #007AFF;
     font-size: 16px;
-  
+
+    
 `;
 
 export const TopCenterText = styled.Text`
     color: #000;
     font-size: 17px;
     font-weight: 600;
-    flex: 1;
     text-align: center;
-    
-`;
+    justify-content: center;
+    flex-shrink: 0;
 
-export const TitleContainer = styled.View`
-    background-color: #304163;
-    border-radius: 4px;
-    padding: 8px 16px;
+    
 `;
 
 export const Title = styled.Text`
@@ -49,9 +46,43 @@ export const Title = styled.Text`
     font-size: 20px;
 `;
 
-export const TextStatus = styled.Text`
+export const TextAddTask = styled.Text`
+    color: #3C3C43;
+    opacity: 0.6;
+    font-size: 13px;
+    letter-spacing: 0px;
+`;
+
+export const TitlesArea = styled.View`
+    flex-direction: column;
+    gap: 2px;
+`;
+
+export const TitleContainer = styled.View`
+    flex-direction: row;
+    width: 350px;
+    height: 44px;
+    background-color: #FFF;
+    border-radius: 4px;
+    align-items: center;
+   
+
+`;
+
+export const TitleLabel = styled.Text`
     color: #000;
-    font-size: 16px;
+    font-size: 17px;
+    font-weight: 500;
+    margin-left: 16px;
+
+`;
+
+export const TitlesInput = styled.TextInput`
+    flex: 1;
+    padding-left: 16px;
+    font-size: 17px;
+    line-height: 22px;
+    border-left: 1px solid #007AFF;
 `;
 
 export const StatusContainer = styled.View`

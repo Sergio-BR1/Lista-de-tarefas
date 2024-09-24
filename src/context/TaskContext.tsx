@@ -7,8 +7,9 @@ interface TaskContextProps {
     tasks: TaskProps[],
     selectTask: (task: TaskProps) => void, 
     clearTask: () => void, 
-    createTask: (title: string) => void,
+    createTask: (title: string, subtitle: string) => void,
     setTasks: ([]: TaskProps[]) => void,
+    countTasks: number,
 }
 
 interface TaskProviderProps {
@@ -18,12 +19,13 @@ interface TaskProviderProps {
 
 export const TaskContext = createContext<TaskContextProps>(
     {
-        task: {id: 0, title: '', status: false}, 
+        task: {id: 0, title: '', subtitle: '', status: false}, 
         tasks: [],
         selectTask:()=>{}, 
         clearTask: ()=>{},
         createTask: ()=> {},
-        setTasks: () => {}
+        setTasks: () => {},
+        countTasks: 0,
 
      }
 )
@@ -48,15 +50,17 @@ function TaskProvider({children}: TaskProviderProps) {
             if(tasks) {
                 setTasks(JSON.parse(tasks));
             }
-        }catch(error) {
+        }
+        catch(error) {
             console.log(error);
         }
     }
 
-    function createTask(title: string) {
+    function createTask(title: string, subtitle: string) {
         const newTask = {
             id: tasks.length+1,
             title: title,
+            subtitle: subtitle,
             status: false,
         };
         setTasks([...tasks, newTask]);
@@ -69,7 +73,7 @@ function TaskProvider({children}: TaskProviderProps) {
     }
 
     function clearTask() {
-        setTask({id: 0, title: '', status: false});
+        setTask({id: 0, title: '', subtitle: '', status: false});
     }
     
     useEffect(() => {
@@ -81,7 +85,7 @@ function TaskProvider({children}: TaskProviderProps) {
     }, [])
 
     return (
-        <TaskContext.Provider value={{task, selectTask, clearTask, tasks, createTask, setTasks}}>
+        <TaskContext.Provider value={{task, selectTask, clearTask, tasks, createTask, setTasks, countTasks: tasks.length}}>
          {children}
         </TaskContext.Provider>
     );

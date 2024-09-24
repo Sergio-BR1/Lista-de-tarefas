@@ -34,6 +34,7 @@ export default function Home() {
     const updatedTasks = tasks.filter((task)=> task.title !== taskToChange.title);
     const newTask =  {
       id: taskToChange.id,
+      subtitle: taskToChange.subtitle,
       title: taskToChange.title,
       status: !taskToChange.status,
     }

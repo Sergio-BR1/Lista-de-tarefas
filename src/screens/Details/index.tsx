@@ -1,17 +1,47 @@
-import { Container, TextStatus, Title, TitleContainer, TopContainer, TopButton, TopLeftText, TopCenterText, StatusContainer, StatusCard, StatusIcon, StatusTextContainer, StatusText, StatusButtonDel } from "./styles";
+import { Container, TextAddTask, Title, TopContainer, TopButton, TopLeftText, TopCenterText, TitlesArea, TitleContainer, TitleLabel, TitlesInput } from "./styles";
 import {Feather} from "@expo/vector-icons";
 import { RootStackParamList } from "@/utils/types";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { useNavigation } from "@react-navigation/native";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { TaskContext } from "@/context/TaskContext";
+import { Alert } from "react-native";
+
+
 
 type Props = NativeStackScreenProps<RootStackParamList>; 
 
 
 export default function Details() {
 
+    const {tasks, createTask, setTasks} = useContext(TaskContext);
+    const [taskTitleText, setTaskTitleText] = useState("");
+    const [taskSubtitleText, setTaskSubtitleText] = useState("");
+
     const {task} = useContext(TaskContext);
+
+    function handleTaskAdd() {
+        if(taskTitleText == "") {
+          console.log('vazio');
+          return Alert.alert("Erro", "Tarefa está sem descrição.");
+        }
+    
+        if(tasks.some((task)=> task.title === taskTitleText)) {
+          console.log('Tarefa já existe!');
+          return Alert.alert("Erro", "Tarefa já existe!");
+        }
+
+        let subtitle = "";
+    
+        if (task.subtitle != '') {
+            subtitle = task.subtitle!;
+        }
+        createTask(taskTitleText, subtitle);
+        setTaskTitleText('');
+        setTaskSubtitleText('');
+      }
+
+      
 
     const navigation = useNavigation<Props['navigation']>();
 
@@ -23,25 +53,30 @@ export default function Details() {
                     <TopLeftText>Voltar</TopLeftText>
                 </TopButton>
                 
-                <TopCenterText>Adicionar</TopCenterText>
+                
             </TopContainer>
-            <TitleContainer>
-                <Title>{task.title}</Title>
-            </TitleContainer>
-            <TextStatus>Status do task:</TextStatus>
-            <StatusContainer>
-                <StatusCard>
-                    <StatusIcon style={task.status? {backgroundColor: "#0e9577"}: {}}>
-                        {task.status && <Feather name="check" size={24} color="white" />}
-                    </StatusIcon>
-                    <StatusTextContainer>
-                        <StatusText>{task.status ? "Marcado": "Não marcado"}</StatusText>
-                    </StatusTextContainer>
-                </StatusCard>
-                <StatusButtonDel>
-                    <Feather name="trash-2" size={24} color="white" />
-                </StatusButtonDel>
-            </StatusContainer>
+            <TopCenterText>Adicionar</TopCenterText>
+            <TextAddTask>ADICIONE A PRÓXIMA ATIVIDADE</TextAddTask>
+            <TitlesArea>
+                <TitleContainer>
+                    <TitleLabel>Título</TitleLabel>
+                    <TitlesInput
+                    placeholder='Digite a tarefa'
+                    placeholderTextColor="rgba(60, 60, 67, 0.3);"
+                    keyboardType='default'
+                    onChangeText={setTaskTitleText}
+                    />
+                </TitleContainer>
+                <TitleContainer>
+                    <TitleLabel>Subtítulo</TitleLabel>
+                    <TitlesInput
+                    placeholder='Digite a tarefa'
+                    placeholderTextColor="rgba(60, 60, 67, 0.3);"
+                    keyboardType='default'
+                    onChangeText={setTaskSubtitleText}
+                    />
+                </TitleContainer>
+            </TitlesArea>
         </Container>
 
     );
