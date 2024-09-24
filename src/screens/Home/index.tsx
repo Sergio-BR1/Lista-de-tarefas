@@ -3,6 +3,7 @@ import { Alert, FlatList, StyleSheet, Text, View } from 'react-native';
 import { InputAddTask } from '../../components/InputAddTask';
 import { Task } from '../../components/Task';
 import { CardNumber } from '../../components/CardNumber';
+import { ButtonAddTask } from '@/components/buttonAddTask';
 import { useContext } from 'react';
 import { TaskContext } from '@/context/TaskContext';
 import { TaskProps } from '@/utils/types';
@@ -73,35 +74,42 @@ export default function Home() {
 
   return (
     <View style={styles.container}>
+
+      <View style={styles.content}>
       
-      <InputAddTask onPress={handleTaskAdd} onChangeText={setTaskText} value={taskText}/>
+        <InputAddTask onPress={handleTaskAdd} onChangeText={setTaskText} value={taskText}/>
 
-      
-      <View style={styles.tasks}>
-        <Text>Tarefas: {countTask}</Text>
+        
+        <View style={styles.tasks}>
+          <Text>Tarefas: {countTask}</Text>
 
-        <FlatList
-          data={tasks}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={
-            ({item}) => (
-              <Task
-                id={item.id} 
-                title={item.title}
-                status={item.status}
-                onCheck={()=>handleTaskChangeStatus(item)}
-                onRemove={()=>handleTaskDelete(item)}
+          <FlatList
+            data={tasks}
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={
+              ({item}) => (
+                <Task
+                  id={item.id} 
+                  title={item.title}
+                  status={item.status}
+                  onCheck={()=>handleTaskChangeStatus(item)}
+                  onRemove={()=>handleTaskDelete(item)}
 
-              />
-            )
-          }
-          ListEmptyComponent={() => (
-            <View>
-              <Text>Você ainda não cadastrou tarefas!</Text>
-              <Text>Adicione uma tarefa para começar.</Text>
-            </View>
-          )}
-          />
+                />
+              )
+            }
+            ListEmptyComponent={() => (
+              <View>
+                <Text>Você ainda não cadastrou tarefas!</Text>
+                <Text>Adicione uma tarefa para começar.</Text>
+              </View>
+            )}
+            />
+      </View>
+    </View>
+    
+    <View style={styles.addTask}>
+      <ButtonAddTask onPress={handleTaskAdd}/>
     </View>
   </View>
   );
@@ -112,10 +120,17 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#FCEEC9',
     alignItems: 'center',
-    justifyContent: 'flex-start',
-    padding: 16,
+    justifyContent: 'space-between',
     paddingTop: 65,
+    paddingBottom: 32,
+  },
+
+  content: {
+    flex: 1,
+    alignItems: 'center',
+    padding: 16,
     gap: 16,
+    justifyContent: 'flex-start',
   },
   inputContainer: {
     flexDirection: 'row', 
@@ -137,6 +152,10 @@ const styles = StyleSheet.create({
     width: '100%',
     flexDirection: 'column',
 
+  },
+
+  addTask: {
+    justifyContent: 'flex-end',
   }
 });
 

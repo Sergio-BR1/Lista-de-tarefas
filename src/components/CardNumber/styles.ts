@@ -11,7 +11,7 @@ export const Container = styled.View`
 `;
 
 export const CardTitle = styled.Text`
-    color: #1E1E1E;
+    color: #000;
     font-size: 17px;
     font-weight: 500px;
 
@@ -19,7 +19,7 @@ export const CardTitle = styled.Text`
 
 
 export const CardValue = styled.Text`
-    color: #1E1E1E;
+    color: #000;
     font-size: 24px;
     font-weight: 500px;
     
