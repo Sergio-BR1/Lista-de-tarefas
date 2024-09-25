@@ -26,7 +26,7 @@ export default function Home() {
       return Alert.alert("Erro", "Tarefa já existe!");
     }
 
-    createTask(taskText);
+    createTask(taskText, "");
     setTaskText('');
   }
 

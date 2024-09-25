@@ -1,4 +1,4 @@
-import { Container, TextAddTask, Title, TopContainer, TopButton, TopLeftText, TopCenterText, TitlesArea, TitleContainer, TitleLabel, TitlesInput } from "./styles";
+import { Container, OverlaidText, TopContainer, TopButton, TopLeftText, TopCenterText, FrameContainer, Frame, TextLabel, TitlesInput, ButtonAdd, ButtonAddText } from "./styles";
 import {Feather} from "@expo/vector-icons";
 import { RootStackParamList } from "@/utils/types";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
@@ -56,27 +56,43 @@ export default function Details() {
                 
             </TopContainer>
             <TopCenterText>Adicionar</TopCenterText>
-            <TextAddTask>ADICIONE A PRÓXIMA ATIVIDADE</TextAddTask>
-            <TitlesArea>
-                <TitleContainer>
-                    <TitleLabel>Título</TitleLabel>
+                
+            <FrameContainer>
+                <OverlaidText>ADICIONE A PRÓXIMA ATIVIDADE</OverlaidText>
+                <Frame>
+                    <TextLabel>Título</TextLabel>
                     <TitlesInput
                     placeholder='Digite a tarefa'
                     placeholderTextColor="rgba(60, 60, 67, 0.3);"
                     keyboardType='default'
                     onChangeText={setTaskTitleText}
                     />
-                </TitleContainer>
-                <TitleContainer>
-                    <TitleLabel>Subtítulo</TitleLabel>
+                </Frame>
+                <Frame>
+                    <TextLabel>Subtítulo</TextLabel>
                     <TitlesInput
                     placeholder='Digite a tarefa'
                     placeholderTextColor="rgba(60, 60, 67, 0.3);"
                     keyboardType='default'
                     onChangeText={setTaskSubtitleText}
                     />
-                </TitleContainer>
-            </TitlesArea>
+                </Frame>
+            </FrameContainer>
+            <FrameContainer>
+                <OverlaidText>ALARME E LEMBRETE</OverlaidText>
+                    <Frame>
+                        <TextLabel>Alarme</TextLabel>
+
+                    </Frame>
+                    <Frame>
+                        <TextLabel>Lembrete</TextLabel>
+                    </Frame>
+            </FrameContainer>
+            <FrameContainer>
+                <ButtonAdd>
+                    <ButtonAddText>Adicionar</ButtonAddText>
+                </ButtonAdd>
+            </FrameContainer>
         </Container>
 
     );

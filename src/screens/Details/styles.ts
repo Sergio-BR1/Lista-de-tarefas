@@ -5,11 +5,10 @@ export const Container = styled.View`
     background-color: #FCEEC9;
     padding: 16px;
     padding-top: 64px;
-    gap: 12px;
+   
 `;
 
 export const TopContainer = styled.View`
-    margin: 0px;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
@@ -37,39 +36,37 @@ export const TopCenterText = styled.Text`
     text-align: center;
     justify-content: center;
     flex-shrink: 0;
+    margin-bottom: 30px;
 
     
 `;
 
-export const Title = styled.Text`
-    color: #fff;
-    font-size: 20px;
-`;
-
-export const TextAddTask = styled.Text`
+export const OverlaidText = styled.Text`
+    margin-left: 16px;
     color: #3C3C43;
     opacity: 0.6;
     font-size: 13px;
-    letter-spacing: 0px;
+    
 `;
 
-export const TitlesArea = styled.View`
+export const FrameContainer = styled.View`
+    margin-top: 40px;
     flex-direction: column;
-    gap: 2px;
+    gap: 1px;
 `;
 
-export const TitleContainer = styled.View`
+export const Frame = styled.View`
     flex-direction: row;
     width: 350px;
     height: 44px;
     background-color: #FFF;
-    border-radius: 4px;
+    border-radius: 8px;
     align-items: center;
    
 
 `;
 
-export const TitleLabel = styled.Text`
+export const TextLabel = styled.Text`
     color: #000;
     font-size: 17px;
     font-weight: 500;
@@ -81,40 +78,21 @@ export const TitlesInput = styled.TextInput`
     flex: 1;
     padding-left: 16px;
     font-size: 17px;
-    line-height: 22px;
     border-left: 1px solid #007AFF;
 `;
 
-export const StatusContainer = styled.View`
-    flex-direction: row;
+export const ButtonAdd = styled.TouchableOpacity`
+    width: 361px;
+    height: 44px;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 8px;
+    
 `;
 
-export const StatusCard = styled.View`
-    background-color: #304163;
-    border-radius: 4px;
-    flex-direction: row;
-    gap: 16px;
-    flex: 1;
-`;
-
-export const StatusIcon = styled.View`
-    background-color: #c88a1a;
-    border-radius: 4px;
-    padding: 16px;
-
-`;
-
-export const StatusTextContainer = styled.View`
-    padding: 16px;
-`;
-
-export const StatusText = styled.Text`
-    color: #fff;
-    font-size: 16px;
-`;
-
-export const StatusButtonDel = styled.TouchableOpacity`
-    background-color: #F22424;
-    border-radius: 4px;
-    padding: 16px;
+export const ButtonAddText = styled.Text`
+    color: #007AFF;
+    font-size: 17px;
+    font-weight: 400;
 `;
