@@ -10,10 +10,6 @@ export const Container = styled.TouchableOpacity`
     border-radius: 10px;
     overflow: hidden;
     margin-bottom: 16px;
-    shadow-color: '#000000';
-    shadow-offset: 1px 6px;
-    shadow-opacity: 1;
-    shadow-radius: 3px;
 `;
 
 export const TaskText = styled.Text`

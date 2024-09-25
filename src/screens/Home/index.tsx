@@ -2,14 +2,22 @@ import { useEffect, useState } from 'react';
 import { Alert, FlatList, StyleSheet, Text, View } from 'react-native';
 import { InputAddTask } from '../../components/InputAddTask';
 import { Task } from '../../components/Task';
-import { CardNumber } from '../../components/CardNumber';
 import { ButtonAddTask } from '@/components/buttonAddTask';
 import { useContext } from 'react';
 import { TaskContext } from '@/context/TaskContext';
-import { TaskProps } from '@/utils/types';
+import { TaskProps, RootStackParamList } from '@/utils/types';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { Title } from './styles';
+
+
+type Props = NativeStackScreenProps<RootStackParamList>;
 
 export default function Home() {
 
+  
+
+  const navigation= useNavigation<Props['navigation']>();
   const {tasks, createTask, setTasks} = useContext(TaskContext);
   const [taskText, setTaskText] = useState("");
   const [countTask, setCountTask] = useState(0);
@@ -67,6 +75,10 @@ export default function Home() {
 
   }
 
+  function handlePress() {
+    navigation.navigate("Details");
+}
+
   useEffect(() => {
     let totalTasks = tasks.length;
     setCountTask(totalTasks);
@@ -77,12 +89,10 @@ export default function Home() {
     <View style={styles.container}>
 
       <View style={styles.content}>
-      
-        <InputAddTask onPress={handleTaskAdd} onChangeText={setTaskText} value={taskText}/>
-
+    
+        <Title>Meu Dia</Title>
         
         <View style={styles.tasks}>
-          <Text>Tarefas: {countTask}</Text>
 
           <FlatList
             data={tasks}
@@ -110,7 +120,7 @@ export default function Home() {
     </View>
     
     <View style={styles.addTask}>
-      <ButtonAddTask onPress={handleTaskAdd}/>
+      <ButtonAddTask onPress={handlePress}/>
     </View>
   </View>
   );
@@ -133,6 +143,8 @@ const styles = StyleSheet.create({
     gap: 16,
     justifyContent: 'flex-start',
   },
+
+  
   inputContainer: {
     flexDirection: 'row', 
     borderRadius: 4,

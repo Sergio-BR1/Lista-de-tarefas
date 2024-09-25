@@ -35,8 +35,6 @@ export const TopCenterText = styled.Text`
     font-weight: 600;
     text-align: center;
     justify-content: center;
-    flex-shrink: 0;
-    margin-bottom: 30px;
 
     
 `;
@@ -57,7 +55,7 @@ export const FrameContainer = styled.View`
 
 export const Frame = styled.View`
     flex-direction: row;
-    width: 350px;
+    width: 361px;
     height: 44px;
     background-color: #FFF;
     border-radius: 8px;

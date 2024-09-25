@@ -9,10 +9,13 @@ import { Alert } from "react-native";
 
 
 
+
 type Props = NativeStackScreenProps<RootStackParamList>; 
 
 
 export default function Details() {
+
+    const navigation= useNavigation<Props['navigation']>();
 
     const {tasks, createTask, setTasks} = useContext(TaskContext);
     const [taskTitleText, setTaskTitleText] = useState("");
@@ -39,11 +42,11 @@ export default function Details() {
         createTask(taskTitleText, subtitle);
         setTaskTitleText('');
         setTaskSubtitleText('');
+        navigation.popToTop()
       }
 
       
 
-    const navigation = useNavigation<Props['navigation']>();
 
     return (
         <Container>
@@ -62,7 +65,7 @@ export default function Details() {
                 <Frame>
                     <TextLabel>Título</TextLabel>
                     <TitlesInput
-                    placeholder='Digite a tarefa'
+                    placeholder='Título da sua atividade'
                     placeholderTextColor="rgba(60, 60, 67, 0.3);"
                     keyboardType='default'
                     onChangeText={setTaskTitleText}
@@ -71,7 +74,7 @@ export default function Details() {
                 <Frame>
                     <TextLabel>Subtítulo</TextLabel>
                     <TitlesInput
-                    placeholder='Digite a tarefa'
+                    placeholder='Explicação da atividade'
                     placeholderTextColor="rgba(60, 60, 67, 0.3);"
                     keyboardType='default'
                     onChangeText={setTaskSubtitleText}
@@ -89,7 +92,7 @@ export default function Details() {
                     </Frame>
             </FrameContainer>
             <FrameContainer>
-                <ButtonAdd>
+                <ButtonAdd onPress={handleTaskAdd}>
                     <ButtonAddText>Adicionar</ButtonAddText>
                 </ButtonAdd>
             </FrameContainer>
