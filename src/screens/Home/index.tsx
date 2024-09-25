@@ -19,24 +19,7 @@ export default function Home() {
 
   const navigation= useNavigation<Props['navigation']>();
   const {tasks, createTask, setTasks} = useContext(TaskContext);
-  const [taskText, setTaskText] = useState("");
-  const [countTask, setCountTask] = useState(0);
-  const [countTaskCheck, setCountTaskCheck] = useState(0);
 
-  function handleTaskAdd() {
-    if(taskText == "") {
-      console.log('vazio');
-      return Alert.alert("Erro", "Tarefa está sem descrição.");
-    }
-
-    if(tasks.some((task)=> task.title === taskText)) {
-      console.log('Tarefa já existe!');
-      return Alert.alert("Erro", "Tarefa já existe!");
-    }
-
-    createTask(taskText, "");
-    setTaskText('');
-  }
 
   function handleTaskChangeStatus(taskToChange: TaskProps) {
     const updatedTasks = tasks.filter((task)=> task.title !== taskToChange.title);
@@ -45,12 +28,6 @@ export default function Home() {
       subtitle: taskToChange.subtitle,
       title: taskToChange.title,
       status: !taskToChange.status,
-    }
-    if (newTask.status) {
-      setCountTaskCheck(countTaskCheck + 1);
-    }
-    else {
-      setCountTaskCheck(countTaskCheck - 1);
     }
     updatedTasks.push(newTask);
     setTasks(updatedTasks);
@@ -61,9 +38,6 @@ export default function Home() {
       [
         {text: "Sim",
           onPress: () => {
-            if (taskToDelete.status) {
-              setCountTaskCheck(countTaskCheck - 1);
-            }
             const updatedTasks = tasks.filter((task) => task.title !== taskToDelete.title)
             setTasks(updatedTasks);
           }
@@ -78,12 +52,6 @@ export default function Home() {
   function handlePress() {
     navigation.navigate("Details");
 }
-
-  useEffect(() => {
-    let totalTasks = tasks.length;
-    setCountTask(totalTasks);
-  }, [tasks]); 
-
 
   return (
     <View style={styles.container}>

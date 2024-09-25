@@ -13,7 +13,7 @@ import { Alert } from "react-native";
 type Props = NativeStackScreenProps<RootStackParamList>; 
 
 
-export default function Details() {
+export default function TaskCreate() {
 
     const navigation= useNavigation<Props['navigation']>();
 

@@ -9,7 +9,6 @@ interface TaskContextProps {
     clearTask: () => void, 
     createTask: (title: string, subtitle: string) => void,
     setTasks: ([]: TaskProps[]) => void,
-    countTasks: number,
 }
 
 interface TaskProviderProps {
@@ -25,7 +24,6 @@ export const TaskContext = createContext<TaskContextProps>(
         clearTask: ()=>{},
         createTask: ()=> {},
         setTasks: () => {},
-        countTasks: 0,
 
      }
 )
@@ -85,7 +83,7 @@ function TaskProvider({children}: TaskProviderProps) {
     }, [])
 
     return (
-        <TaskContext.Provider value={{task, selectTask, clearTask, tasks, createTask, setTasks, countTasks: tasks.length}}>
+        <TaskContext.Provider value={{task, selectTask, clearTask, tasks, createTask, setTasks}}>
          {children}
         </TaskContext.Provider>
     );
